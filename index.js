@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(compression());
 
 mongoose.set('strictQuery', true);
-mongoose.connect(process.env.MONGO_DB).then(() => console.log("DB Online"));
+mongoose.connect(process.env.MONGO_DB || 3000).then(() => console.log("DB Online"));
 
 app.get("/", (req, res) => res.json({ welcome: "Server online" }));
 app.use("/api/kpis", require("./routes/kpis"));
